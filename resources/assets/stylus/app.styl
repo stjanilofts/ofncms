@@ -1,0 +1,365 @@
+@import 'typographic'
+
+@import 'kal-mixins'
+
+.cloned
+	visibility: hidden
+	opacity: 0
+.sticky
+	z-index: 9999
+	position: fixed !important
+	top: 0 !important
+	left: 0 !important
+	width: 100% !important
+
+
+/* Colors */
+$dark			= #222;
+
+$blue 			= #50B3CF
+$blue-lite1		= lighten($blue, 10)
+$blue-lite2		= lighten($blue, 20)
+$blue-lite3		= lighten($blue, 35)
+$blue-dark1		= darken($blue, 10)
+$blue-dark2		= darken($blue, 20)
+
+$orange 		= #FFCF5D
+$orange-lite1		= lighten($orange, 10)
+$orange-lite2		= lighten($orange, 20)
+$orange-dark1		= darken($orange, 10)
+$orange-dark2		= darken($orange, 20)
+
+$red 			= #f15c5c
+$red-lite1		= lighten($red, 10)
+$red-lite2		= lighten($red, 20)
+$red-dark1		= darken($red, 10)
+$red-dark2		= darken($red, 20)
+
+/* My fonts */
+$oswald       = 'Oswald', 'sans-serif'
+
+/*
+
+$minor-second   = 1.067
+$major-second   = 1.125
+$minor-third    = 1.2
+$major-third    = 1.25
+$perfect-fourth = 1.333
+$aug-fourth     = 1.414
+$perfect-fifth  = 1.5
+$minor-sixth    = 1.6
+$golden         = 1.618
+$major-sixth    = 1.667
+$minor-seventh  = 1.778
+$major-seventh  = 1.875
+$octave         = 2
+$major-tenth    = 2.5
+$major-eleventh = 2.667
+$major-twelfth  = 3
+$double-octave  = 4
+
+$calibri       : 'Calibri', 'Candara', 'Segoe', 'Segoe UI', 'Optima', 'Arial', 'sans-serif';
+$candara       : 'Candara', 'Calibri', 'Segoe', 'Segoe UI', 'Optima', 'Arial', 'sans-serif';
+$courier       : 'Courier New', 'Courier', 'Lucida Sans Typewriter', 'Lucida Typewriter', 'monospace';
+$franklin      : 'Franklin Gothic Medium', 'Arial', 'sans-serif';
+$futura        : 'Futura', 'Trebuchet MS', 'Arial', 'sans-serif';
+$geneva        : 'Geneva', 'Tahoma', 'Verdana', 'sans-serif';
+$gill-sans     : 'Gill Sans', 'Gill Sans MT', 'Calibri', 'sans-serif';
+$helvetica     : 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+$lucida-grande : 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Geneva', 'Verdana', 'sans-serif';
+$optima        : 'Optima', 'Segoe', 'Segoe UI', 'Candara', 'Calibri', 'Arial', 'sans-serif';
+$segoe         : 'Segoe', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif';
+$tahoma        : 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+$trebuchet     : 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Tahoma', 'sans-serif';
+$verdana       : 'Verdana', 'Geneva', 'sans-serif';
+
+
+// Serif
+
+$antiqua       : 'Book Antiqua', 'Palatino', 'Palatino Linotype', 'Palatino LT STD', 'Georgia', 'serif';
+$baskerville   : 'Baskerville', 'Baskerville old face', 'Hoefler Text', 'Garamond', 'Times New Roman', 'serif';
+$bodoni        : 'Bodoni MT', 'Didot', 'Didot LT STD', 'Hoefler Text', 'Garamond', 'Times New Roman', 'serif';
+$cambria       : 'Cambria', 'Georgia', 'serif';
+$caslon        : 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', 'Georgia', 'serif';
+$constantia    : 'Constantia', 'Palatino', 'Palatino Linotype', 'Palatino LT STD', 'Georgia', 'serif';
+$didot         : 'Didot', 'Didot LT STD', 'Hoefler Text', 'Garamond', 'Times New Roman', 'serif';
+$garamond      : 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', 'serif';
+$goudy         : 'Goudy Old Style', 'Garamond', 'Big Caslon', 'Times New Roman', 'serif';
+$hoefler       : 'Hoefler Text', 'Baskerville old face', 'Garamond', 'Times New Roman', 'serif';
+$lucida-bright : 'Lucida Bright', 'Georgia', 'serif';
+$palatino      : 'Palatino', 'Palatino Linotype', 'Palatino LT STD', "Book Antiqua", 'Georgia', 'serif';
+
+*/
+
+$line-height-ratio  = $golden
+$header-ratio       = $perfect-fourth
+$body-font          = $segoe
+$body-font-weight   = 300
+$body-color         = #666
+$header-font        = $segoe
+$header-font-weight = 700
+$header-color       = $blue
+$min-font           = 13px
+$max-font           = 17px
+$min-width          = 480px
+$max-width          = 1400px
+$vertical-rhythm    = true
+
+typographic()
+
+gutter = 1em
+@lost gutter 1em
+
+/* Breakpoints */
+@import 'media-queries'
+
+html
+	padding: 0;
+	margin: 0;
+
+body
+	margin: 0
+	padding: 0
+	background: $blue-lite2
+
+	a
+		color: $blue
+		transition: color 0.2s ease
+
+		&:focus,
+		&:active,
+		&:hover
+			color: $blue-lite2
+			transition: color 0.2s ease
+
+.container
+	margin: 0 auto
+	lost-utility: clearfix;
+	max-width: $max-width
+	&--gutter-top
+		margin-top gutter
+	&--gutter-bottom
+		margin-top gutter
+	&--gutter
+		margin gutter
+	&--shadow
+		box-shadow 1px 1px 2px $blue
+	+medium()
+		margin 0 !important
+
+.Slider
+	&.slick-slider
+		margin-bottom: 0px !important
+	&__image
+		img
+			max-width: 100vw
+		position: relative
+	&__text
+		h1, h2, h3, h4, h5, h6
+			padding 0
+			color white
+			margin 0
+			+small()
+				font-size 1em
+		font-weight: bold
+		position: absolute
+		pointer-events: none
+		bottom: 0
+		left: 0
+		right: 0
+		padding: gutter * 2
+		text-transform: uppercase
+		background: rgba($blue-dark2, 0.85)
+		color: white
+		text-align: center
+		margin: 0
+
+.Banner
+	background white
+	min-height 150px
+	height 35vw
+	max-height 250px
+	lost-align center
+	h1
+		padding-top 0
+		color white
+		text-align center
+		margin-top 0
+		margin-bottom gutter
+
+.Logos
+	&.slick-slider
+		margin-bottom: 0px !important
+	padding: gutter
+	background: $blue-dark2
+	&__image
+		height: 100px
+		lost-align: center
+
+#crumbs
+	ul
+		padding: 0
+		margin: 0
+		list-style: none
+	li
+		padding: 0
+		margin: 0
+		list-style: none
+		float: left
+		a
+			text-decoration: none
+		text-transform: uppercase
+		font-size: 0.7em
+		font-weight: 300
+		&:after
+			content: " / "
+			margin-right: 1em
+			padding-left: 1em
+		&:last-child:after
+			display: none
+		+medium()
+			display: block
+			float: none
+			&:after
+				display: none
+
+
+
+.Footer
+	box-shadow 1px 1px 2px $blue
+	padding gutter
+	background: #222
+	color $orange
+	font-weight bold
+	font-size 0.85em
+	text-align center
+
+
+
+.Head
+	.icons
+		+small()
+			display none
+		position absolute
+		top gutter
+		right gutter
+		ul
+			margin 0
+			list-style none
+			padding 0
+			li
+				margin 0
+				padding 0
+				display inline-block
+				margin-left gutter
+				a
+					font-size 1.5em
+				float left
+	padding gutter
+	position relative
+	background: $dark
+	#logo
+		img
+			max-width: 38vw
+
+nav
+	&.Mobile
+		lost-align center
+		position absolute
+		right gutter
+		margin-right gutter
+		top 0
+		bottom 0
+		ul
+			padding 0
+			margin 0
+			list-style none
+			li
+				padding 0
+				margin 0
+				list-style none
+		i
+			font-size 2em
+		display none
+		+small()
+			display block
+	&.Mobile__nav
+		display none
+		background $dark
+		color $blue
+		ul
+			margin 0
+			padding 0
+			list-style none
+			li
+				margin 0
+				padding 0
+				list-style none
+				a
+					font-weight bold
+					text-decoration none
+					padding gutter
+					text-transform uppercase
+					text-align right
+					display block
+
+	&.Main
+		+small()
+			display none
+		position absolute
+		right gutter
+		bottom gutter
+		text-transform uppercase
+		a
+			font-weight 700
+			color $blue
+			text-decoration none
+			transition border 0.3s, padding 0.3s, color 0.3s
+			padding-bottom 0.3em
+			border-bottom: 3px solid $dark
+			margin-left gutter
+			&:hover
+				color $blue-lite2
+				border-bottom 3px solid $red
+				padding-bottom 0em
+				transition border 0.3s, padding 0.3s, color 0.3s
+				text-decoration none
+		float right
+		ul
+			list-style none
+			padding 0
+			margin 0
+			li
+				&.active
+					a
+						padding-bottom 0em
+						border-bottom 3px solid $red
+				float left
+				display block
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import 'table'
+@import 'tabs'
+@import 'forms'
+@import 'button'
+@import 'cards'
+@import 'box'
+@import 'product'
+@import 'animations'
+@import 'page'
+

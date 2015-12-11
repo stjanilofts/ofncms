@@ -1,0 +1,42 @@
+form
+	padding-top: gutter
+	padding-bottom gutter
+	font-weight 700
+	width: 100%
+	.form-row
+		lost-column: 1/2 2 gutter
+		&.fullwidth
+			lost-column: 1/1 1 gutter
+		+small()
+			lost-column: 1/1 1 gutter
+		input, textarea
+			box-sizing: border-box
+			width: 100%
+			background $blue-lite2
+			border: none
+			color $blue-dark2
+			border-radius: 3px			
+			font-weight 700
+			font-family $segoe
+			transition: background 0.3s
+		input[type=checkbox]
+			box-sizing content-box !important
+	.form-error
+		background $red-lite2 !important
+		transition background 0.3s
+::-webkit-input-placeholder
+	color white !important
+	font-weight bold !important
+	font-family $segoe
+:-moz-placeholder
+	color white !important
+	font-weight bold !important
+	font-family $segoe
+::-moz-placeholder
+	color white !important
+	font-weight bold !important
+	font-family $segoe
+:-ms-input-placeholder
+	color white !important
+	font-weight bold !important
+	font-family $segoe

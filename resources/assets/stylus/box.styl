@@ -1,0 +1,49 @@
+.Box
+	position relative
+	lost-column: 3/12 3 gutter
+	margin-bottom gutter
+	&:nth-child(3)
+		lost-column: 6/12 3 gutter
+	+medium()
+		&:nth-child(3)
+			lost-column: 1/1 1 0px
+		lost-column: 1/2 2 0px
+		margin-bottom 0px
+	+xsmall()
+		lost-column: 1/1 1 0px
+	background $blue-dark2
+	color white
+	box-shadow 1px 1px 2px $blue
+	&__content
+		h3
+			padding 0
+			margin 0
+			color white
+			padding-bottom gutter
+			padding-top gutter
+			line-height 1
+		padding gutter
+		p
+			color white
+		p:last-of-type
+			padding-bottom: 0
+			margin-bottom: 0
+		i
+			font-size: 5em
+			color $orange
+	&--center
+		text-align center
+	&--default
+		text-align left
+	&--pure
+		padding 0 !important
+		> .Box__content
+			iframe
+				height 100%
+				width 100%
+				bottom 0
+				top 0
+				position absolute
+				left 0
+				right 0
+			padding 0 !important

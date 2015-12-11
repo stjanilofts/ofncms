@@ -1,0 +1,28 @@
+table
+	width 100%
+	td, th
+		border-bottom 1px solid #EEE
+	tr
+		&:nth-child(even)
+			background #FAFAFA
+	th
+		&:nth-child(1)
+			width 50%
+		&:nth-child(2)
+			width 50%
+	td
+		font-size 0.80em
+		&:nth-child(1)
+			width 50%
+			font-weight bold
+		&:nth-child(2)
+			width 50%
+			text-align left
+	caption
+		text-align left
+		color $blue
+		font-weight bold
+		font-size 1.20em
+		margin-bottom gutter
+	&.details
+		max-width 800px
