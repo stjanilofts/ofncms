@@ -27,4 +27,16 @@ class CategoryController extends ItemableController
     	return parent::edit($id, $extra);
     }
 
+    public function subsIndex($id)
+    {
+        $data['items'] = \App\Product::where('category_id', $id)->orderBy('order')->get();
+
+        $data['modelName'] = $data['items']->first()->modelName();
+        $data['model'] = new \App\Product;
+        /*$data['currentItem'] = $this->currentModel->find($id);*/
+        $data['breadcrumbs'] = $this->breadcrumbs;
+
+        return view('admin.formable.table')->with($data);
+    }
+
 }

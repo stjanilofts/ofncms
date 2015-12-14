@@ -1618,12 +1618,17 @@ button.takki {
   }
 }
 
-.Product__extra-images {
-  overflow: hidden;
+.Product__extra-image {
+  padding-top: 5px;
+  padding-right: 5px;
 }
 
-.Product__extra-images img {
-  cursor: pointer;
+.Product__extra-image:last-child {
+  padding-right: 0px !important;
+}
+
+.Product__extra-images {
+  padding: 0;
 }
 
 .Product__right {
@@ -1696,17 +1701,13 @@ button.takki {
 }
 
 .Product__images {
-  border-right: 3px solid #f15c5c;
-  border-bottom: 3px solid #f15c5c;
+  /*border-right 3px solid $red
+		border-bottom 3px solid $red*/
+  /*+medium()
+			/*border-right 0px solid $red*/
   box-shadow: 1px 1px 2px #ddd;
   background: #eee;
   line-height: 1;
-}
-
-@media (max-width: 768px) {
-  .Product__images {
-    border-right: 0px solid #f15c5c;
-  }
 }
 
 .Product__images a {

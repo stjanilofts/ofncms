@@ -14,10 +14,13 @@
 		lost-column 1/2 2 0px
 		+medium()
 			lost-column 1/1 1 0px
+	&__extra-image
+		padding-top 5px
+		padding-right 5px
+		&:last-child
+			padding-right 0px !important
 	&__extra-images
-		img
-			cursor pointer
-		overflow hidden
+		padding 0
 	&__right
 		overflow hidden
 		lost-column 1/2 5 0px
@@ -26,10 +29,10 @@
 	&__details
 		lost-column 1/1 1 0px
 	&__images
-		border-right 3px solid $red
-		border-bottom 3px solid $red
-		+medium()
-			border-right 0px solid $red
+		/*border-right 3px solid $red
+		border-bottom 3px solid $red*/
+		/*+medium()
+			/*border-right 0px solid $red*/
 		box-shadow 1px 1px 2px #DDD
 		background: #EEE
 		a

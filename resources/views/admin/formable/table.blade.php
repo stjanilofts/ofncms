@@ -73,6 +73,12 @@
 									<i class="uk-icon-pagelines"></i> {{ $item->getSubCount() }}
 								</a>
 							@endif
+
+							@if (File::exists('../resources/views/admin/'.strtolower($item->modelName()).'/_actions.blade.php'))
+								@if($item->products->count() > 0)
+			    					@include('admin.'.strtolower($item->modelName()).'._actions', ['item' => $item])
+			    				@endif
+			    			@endif
 						</td>
 
 						<td>
