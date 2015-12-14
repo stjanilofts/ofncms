@@ -12,8 +12,8 @@ class VorukerfiController extends Controller
 
     public function index()
     {
-        $cats   = \App\Category::where('parent_id', 0)->get();
-        $prods  = \App\Product::where('category_id', 0)->get();
+        $cats   = \App\Category::where('status', 1)->where('parent_id', 0)->orderBy('order')->get();
+        $prods  = \App\Product::where('status', 1)->where('category_id', 0)->orderBy('order')->get();
 
         $data['items'] = $cats->merge($prods);
         $data['title'] = 'Vörur';
@@ -28,34 +28,32 @@ class VorukerfiController extends Controller
         $e = array_filter(explode("/", $slug));
         $last = end($e);
 
-        $item = \App\Category::where('slug', $last)->first();
+        $item = \App\Category::where('status', 1)->where('slug', $last)->first();
 
         if($item) {
-            $cats   = \App\Category::where('parent_id', $item->id)->get();
-            $prods  = \App\Product::where('category_id', $item->id)->get();
+            $cats   = \App\Category::where('status', 1)->where('parent_id', $item->id)->orderBy('order')->get();
+            $prods  = \App\Product::where('status', 1)->where('category_id', $item->id)->orderBy('order')->get();
 
             $data['items'] = $cats->merge($prods);
             $data['title'] = $item->title;
 
-            if($cats->isEmpty() && $prods->isEmpty()) {
-                $data['item'] = $item;
-                $data['seo'] = $item;
-                return view('frontend.product')->with($data);
-            }
-
             return view('frontend.products')->with($data);
         }
 
-        $item = \App\Product::where('slug', $last)->first();
+        $item = \App\Product::where('status', 1)->where('slug', $last)->first();
 
         if(!$item) {
             if (!$item) abort(404, 'Fann ekki síðu!');
         }
 
         $data['item'] = $item;
-        $data['seo'] = $item;
         $data['siblings'] = $item->getSiblings();
+
         $data['title'] = isset($item->category->title) ? $item->category->title : 'Vörur';
+
+        if($item->category_id < 1) {
+            $data['title'] = $item->title;
+        }
 
         return view('frontend.product')->with($data);
     }

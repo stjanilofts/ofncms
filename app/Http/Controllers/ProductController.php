@@ -13,7 +13,8 @@ class ProductController extends ItemableController
 
     public function create($id = 0, $extra = array())
     {
-        $flokkar = array_merge([0 => ' - Veldu flokk - '] + \App\Category::lists('title', 'id')->toArray());
+        $flokkar = \App\Category::lists('title', 'id')->toArray();
+        $flokkar[0] = ' - Enginn flokkur - ';
 
         $extra['flokkar'] = $flokkar;
         $extra['selectedParentId'] = 0;
@@ -25,7 +26,8 @@ class ProductController extends ItemableController
     {
     	$vara = \App\Product::find($id);
 
-        $flokkar = array_merge([0 => ' - Veldu flokk - '] + \App\Category::lists('title', 'id')->toArray());
+        $flokkar = \App\Category::lists('title', 'id')->toArray();
+        $flokkar[0] = ' - Enginn flokkur - ';
 
         $extra['flokkar'] = $flokkar;
         $extra['selectedFlokkurId'] = $vara->{$vara->parent_key} ?: 0;
