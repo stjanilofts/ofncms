@@ -17,7 +17,13 @@ class ProductController extends ItemableController
         $flokkar[0] = ' - Enginn flokkur - ';
 
         $extra['flokkar'] = $flokkar;
-        $extra['selectedParentId'] = 0;
+        $extra['selectedFlokkurId'] = 0;
+
+        if( ! $extra['selectedFlokkurId']) {
+            $extra['selectedFlokkurId'] = \Request::has('parent_id') ? \Request::get('parent_id') : 0;
+        }
+
+        //dd($extra);
 
         return parent::create($id, $extra);
     }
@@ -31,6 +37,10 @@ class ProductController extends ItemableController
 
         $extra['flokkar'] = $flokkar;
         $extra['selectedFlokkurId'] = $vara->{$vara->parent_key} ?: 0;
+
+        if(!$extra['selectedFlokkurId']) {
+            $extra['selectedFlokkurId'] = \Request::has('parent_id') ? \Request::get('parent_id') : 0;
+        }
 
     	return parent::edit($id, $extra);
     }

@@ -33,7 +33,7 @@ class CategoryController extends ItemableController
 
         $data['modelName'] = $data['items']->first()->modelName();
         $data['model'] = new \App\Product;
-        /*$data['currentItem'] = $this->currentModel->find($id);*/
+        $data['currentItem'] = $this->currentModel->find($id);
         $data['breadcrumbs'] = $this->breadcrumbs;
 
         return view('admin.formable.table')->with($data);

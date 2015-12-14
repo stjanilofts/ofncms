@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('parent_id')->default(0)->unsigned();
             //$table->foreign('parent_id')->references('id')->on('flokkar');
             $table->json('translations');
+            $table->json('extras');
             $table->json('options');
             $table->json('images');
             $table->json('shell');
